@@ -26,7 +26,7 @@ Depends on different applications, the following installation methods can
 1. Install packages.
 ```
 # Option 1
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip setuptools wheel
 # Option 2 (Preferred)
