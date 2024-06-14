@@ -33,7 +33,7 @@ pip install --upgrade pip setuptools wheel
 conda create -n venv python=3.8 cudatoolkit=10.1 cudnn=7.6.5
 conda activate venv
 # common install
-pip install -e .[tfgpu,api,dev,testing,linting]
+depend on the system OS
 ```
 2. According to the original repo, please download r3d dataset and transform it to tfrecords `r3d.tfrecords`. Friendly reminder: there is another dataset r2v used to train their original repo's model, I did not use it here cos of limited access. Please see the link here [https://github.com/zlzeng/DeepFloorplan/issues/17](https://github.com/zlzeng/DeepFloorplan/issues/17).
 3. Run the `train.py` file  to initiate the training, model checkpoint is stored as `log/store/G` and weight is in `model/store`,
