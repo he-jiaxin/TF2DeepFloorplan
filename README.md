@@ -84,10 +84,9 @@ python -m dfp.deploy [--image 'path/to/image']
 [--backbone 'vgg16'/'mobilenetv1'/'mobilenetv2'/'resnet50']
 [--feature-names block1_pool block2_pool block3_pool block4_pool block5_pool]
 ```
-- for example,
+- for example for mac and current setup I have,
 ```
-python -m dfp.deploy --image floorplan.jpg --weight log/store/G
---postprocess --colorize --save output.jpg --loadmethod log
+python -m dfp.deploy --image ~/Desktop/Research/TF2DeepFloorplan/Images/floorplan.jpg --weight log/store/G --postprocess --colorize --save ~/Desktop/Research/TF2DeepFloorplan/output.jpg --xml_output output.xml --loadmethod log
 ```
 8. Play with pygame.
 ```
