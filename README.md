@@ -64,6 +64,21 @@ python -m dfp.convert2tflite [--modeldir model/store]
 [--backbone 'vgg16'/'mobilenetv1'/'mobilenetv2'/'resnet50']
 [--feature-names block1_pool block2_pool block3_pool block4_pool block5_pool]
 ```
+
+Mac version 
+```
+python -m dfp.convert2tflite \
+    --modeldir model/store \
+    --tflitedir model/store/model.tflite \
+    --loadmethod log \
+    --quantize \
+    --tfmodel func \
+    --feature-channels 256 128 64 32 \
+    --backbone vgg16 \
+    --feature-names block1_pool block2_pool block3_pool block4_pool block5_pool
+
+```
+
 6. Download and unzip model from google drive,
 ```
 gdown https://drive.google.com/uc?id=1czUSFvk6Z49H-zRikTc67g2HUUz4imON # log files 112.5mb
