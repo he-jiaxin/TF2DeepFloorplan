@@ -5,9 +5,6 @@ Network Architectures from the paper, <br>
 <img src="resources/dfpmodel.png" width="50%"><img src="resources/features.png" width="50%">
 
 
-### Additional feature (pygame)
-![TF2DeepFloorplan_3dviz](resources/raycast.gif)
-
 ## Requirements
 Depends on different applications, the following installation methods can
 
@@ -132,36 +129,6 @@ curl --request POST -F "file=@resources/30939153.jpg" \
 3. If you run `app.py` without docker, the second curl for file upload will not work.
 
 
-## Google Colab
-1. Click on [<img src="https://colab.research.google.com/assets/colab-badge.svg" >](https://colab.research.google.com/github/zcemycl/TF2DeepFloorplan/blob/master/deepfloorplan.ipynb) and authorize access.
-2. Run the first 2 code cells for installation.
-3. Go to Runtime Tab, click on Restart runtime. This ensures the packages installed are enabled.
-4. Run the rest of the notebook.
-
-## How to Contribute?
-1. Git clone this repo.
-2. Install required packages and pre-commit-hooks.
-```
-pip install -e .[tfgpu,api,dev,testing,linting]
-pre-commit install
-pre-commit run
-pre-commit run --all-files
-# pre-commit uninstall/ pip uninstall pre-commit
-```
-3. Create issues. Maintainer will decide if it requires branch. If so,
-```
-git fetch origin
-git checkout xx-features
-```
-4. Stage your files, Commit and Push to branch.
-5. After pull and merge requests, the issue is solved and the branch is deleted. You can,
-```
-git checkout main
-git pull
-git remote prune origin
-git branch -d xx-features
-```
-
 
 ## Results
 - From `train.py` and `tensorboard`.
@@ -180,33 +147,3 @@ git branch -d xx-features
 |`--colorize`|`--postprocess`|`--colorize`<br>`--postprocess`|
 |<img src="resources/color.jpg" width="250">|<img src="resources/post.jpg" width="250">|<img src="resources/postcolor.jpg" width="250">|
 
-## Optimization
-- Backbone Comparison in Size
-
-|Backbone|log|pb|tflite|toml|
-|---|---|---|---|---|
-|VGG16|130.5Mb|119Mb|45.3Mb|[link](docs/experiments/vgg16/exp1)|
-|MobileNetV1|102.1Mb|86.7Mb|50.2Mb|[link](docs/experiments/mobilenetv1/exp1)|
-|MobileNetV2|129.3Mb|94.4Mb|57.9Mb|[link](docs/experiments/mobilenetv2/exp1)|
-|ResNet50|214Mb|216Mb|107.2Mb|[link](docs/experiments/resnet50/exp1)|
-
-- Feature Selection Comparison in Size
-
-|Backbone|Feature Names|log|pb|tflite|toml|
-|---|---|---|---|---|---|
-|MobileNetV1|"conv_pw_1_relu", <br>"conv_pw_3_relu", <br>"conv_pw_5_relu", <br>"conv_pw_7_relu", <br>"conv_pw_13_relu"|102.1Mb|86.7Mb|50.2Mb|[link](docs/experiments/mobilenetv1/exp1)|
-|MobileNetV1|"conv_pw_1_relu", <br>"conv_pw_3_relu", <br>"conv_pw_5_relu", <br>"conv_pw_7_relu", <br>"conv_pw_12_relu"|84.5Mb|82.3Mb|49.2Mb|[link](docs/experiments/mobilenetv1/exp2)|
-
-- Feature Channels Comparison in Size
-
-|Backbone|Channels|log|pb|tflite|toml|
-|---|---|---|---|---|---|
-|VGG16|[256,128,64,32]|130.5Mb|119Mb|45.3Mb|[link](docs/experiments/vgg16/exp1)|
-|VGG16|[128,64,32,16]|82.4Mb|81.6Mb|27.3Mb||
-|VGG16|[32,32,32,32]|73.2Mb|67.5Mb|18.1Mb|[link](docs/experiments/vgg16/exp2)|
-
-- tfmot
-  - Pruning (not working)
-  - Clustering (not working)
-  - Post training Quantization (work the best)
-  - Training aware Quantization (not supported by the version)
